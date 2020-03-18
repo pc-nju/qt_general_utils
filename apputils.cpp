@@ -53,7 +53,10 @@ void AppUtils::writeConfig()
 {
     //参数 QSettings::IniFormat：代表读取的是 ini 文件，默认是注册表
     QSettings settings(AppUtils::configFile, QSettings::IniFormat);
-
+	
+	//防止中文乱码
+	settings.setIniCodec("utf-8");
+	
     //按分组写入设置
     settings.beginGroup(INI_SQL_CONFIG);
     settings.setValue(INI_SQL_CONFIG_USERNAME, AppUtils::username);
